@@ -1,0 +1,226 @@
+/* ═════════════════════════════════════════════
+   STYLE-ONLINE.CSS — Онлайн-эфиры
+   ═════════════════════════════════════════════ */
+
+/* ── LIVE BAR ─────────────────────────────── */
+.ol-live-bar { display:none; background:var(--red); padding:10px 48px; }
+.ol-live-bar.on { display:block; }
+.ol-live-bar-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.ol-live-bar-left { display:flex; align-items:center; gap:10px; font-size:13px; font-weight:700; color:#fff; }
+.ol-live-bar-dot { width:8px; height:8px; border-radius:50%; background:#fff; animation:olBlink 1.2s infinite; }
+.ol-live-bar-topic { font-size:13px; color:rgba(255,255,255,.8); font-style:italic; }
+.ol-live-bar-right { font-size:12px; color:rgba(255,255,255,.8); display:flex; align-items:center; gap:6px; }
+.ol-viewers-dot { width:6px; height:6px; border-radius:50%; background:#fff; animation:olBlink 2s infinite; }
+@keyframes olBlink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── HERO ─────────────────────────────────── */
+.ol-hero {
+  background: linear-gradient(155deg, #0f2040 0%, #1a3260 55%, #0d2548 100%);
+  padding: 48px 48px 44px;
+  position: relative; overflow: hidden;
+}
+.ol-hero::before { content:''; position:absolute; right:-80px; top:-80px; width:480px; height:480px; border-radius:50%; background:radial-gradient(circle,rgba(0,184,198,.09) 0%,transparent 65%); pointer-events:none; }
+.ol-hero::after  { content:''; position:absolute; left:-60px; bottom:-60px; width:340px; height:340px; border-radius:50%; background:radial-gradient(circle,rgba(59,95,192,.09) 0%,transparent 65%); pointer-events:none; }
+.ol-hero-inner { max-width:1200px; margin:0 auto; position:relative; display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+
+.ol-hero-left { flex:1; min-width:300px; }
+.ol-hero-format-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(0,184,198,.15); border:1px solid rgba(0,184,198,.3); border-radius:100px; padding:5px 14px; font-size:11px; font-weight:700; color:var(--cyan); text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px; }
+.ol-live-dot { width:7px; height:7px; border-radius:50%; background:var(--red); animation:olBlink 1.2s infinite; display:none; }
+.ol-live-dot.on { display:block; }
+.ol-hero h1 { font-family:var(--font-d); font-size:clamp(22px,3vw,36px); font-weight:700; line-height:1.2; color:#fff; margin-bottom:10px; }
+.ol-hero h1 em { font-style:italic; color:var(--cyan); }
+.ol-hero-meta { font-size:13px; color:rgba(255,255,255,.5); margin-bottom:16px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.ol-hero-meta span { display:flex; align-items:center; gap:5px; }
+.ol-hero-desc { font-size:14px; color:rgba(255,255,255,.5); line-height:1.7; max-width:560px; margin-bottom:20px; }
+
+/* Speakers in hero */
+.ol-hero-speakers { display:flex; gap:12px; flex-wrap:wrap; }
+.ol-hero-speaker { display:flex; align-items:center; gap:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:10px 14px; }
+.ol-hs-ava { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+.ol-hs-host { background:linear-gradient(135deg,var(--cyan),var(--accent)); }
+.ol-hs-guest { background:rgba(255,255,255,.12); }
+.ol-hs-name { font-size:12px; font-weight:700; color:#fff; }
+.ol-hs-role { font-size:11px; color:rgba(255,255,255,.45); }
+.ol-hs-badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:100px; margin-top:3px; display:inline-block; }
+.ol-badge-host  { background:rgba(0,184,198,.2); color:var(--cyan); }
+.ol-badge-guest { background:rgba(255,255,255,.1); color:rgba(255,255,255,.6); }
+
+/* Hero right: countdown + actions */
+.ol-hero-right { display:flex; flex-direction:column; gap:10px; align-items:flex-end; }
+.ol-hero-countdown { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:var(--radius-lg); padding:20px 22px; min-width:260px; }
+.ol-cd-label { font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--cyan); margin-bottom:12px; }
+.ol-cd-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+.ol-cd-block { background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); border-radius:9px; padding:10px 4px; text-align:center; }
+.ol-cd-num  { font-size:24px; font-weight:800; color:#fff; line-height:1; display:block; font-variant-numeric:tabular-nums; }
+.ol-cd-unit { font-size:9px; color:rgba(255,255,255,.4); margin-top:3px; display:block; letter-spacing:.05em; }
+.ol-hero-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.ol-btn-ghost-w { background:transparent; color:rgba(255,255,255,.65); font-size:13px; font-weight:600; padding:11px 18px; border-radius:9px; border:1.5px solid rgba(255,255,255,.18); cursor:pointer; font-family:var(--font); transition:border-color .2s,color .2s; }
+.ol-btn-ghost-w:hover { border-color:var(--cyan); color:var(--cyan); }
+
+/* ── PLAYER SECTION ───────────────────────── */
+.ol-player-section { background:var(--bg); padding:32px 48px 0; }
+.ol-player-wrap {
+  background:#000; border-radius:var(--radius-lg); overflow:hidden;
+  position:relative; aspect-ratio:16/9; box-shadow:var(--shadow-lg);
+}
+.ol-player-wrap iframe { width:100%; height:100%; border:none; display:block; }
+.ol-player-placeholder {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg,#0d1a2e,#1a3260);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+}
+.ol-pp-icon { font-size:56px; }
+.ol-player-placeholder h3 { font-size:20px; font-weight:700; color:#fff; }
+.ol-player-placeholder p  { font-size:14px; color:rgba(255,255,255,.4); }
+.ol-pp-countdown { display:flex; gap:8px; margin-top:8px; }
+.ol-pp-block { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:12px 10px; text-align:center; min-width:60px; }
+.ol-pp-num  { font-size:26px; font-weight:800; color:var(--cyan); display:block; font-variant-numeric:tabular-nums; }
+.ol-pp-unit { font-size:10px; color:rgba(255,255,255,.4); display:block; margin-top:2px; }
+.ol-player-live-badge { position:absolute; top:14px; left:14px; background:var(--red); color:#fff; font-size:11px; font-weight:800; letter-spacing:.1em; padding:5px 12px; border-radius:7px; display:none; align-items:center; gap:6px; }
+.ol-player-live-badge.on { display:flex; }
+.ol-player-live-badge::before { content:''; width:6px; height:6px; border-radius:50%; background:#fff; animation:olBlink 1.2s infinite; }
+
+/* Player meta bar */
+.ol-player-meta { display:flex; align-items:center; justify-content:space-between; padding:14px 0; flex-wrap:wrap; gap:12px; border-bottom:1px solid var(--border); }
+.ol-player-meta-left h2 { font-size:17px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.ol-player-meta-tags { display:flex; gap:12px; font-size:12px; color:var(--muted); flex-wrap:wrap; }
+.ol-player-meta-tags span { display:flex; align-items:center; gap:4px; }
+.ol-viewers-tag { color:var(--green) !important; }
+.ol-player-meta-right { display:flex; gap:8px; }
+.ol-share-btn { display:flex; align-items:center; gap:6px; font-size:12px; font-weight:600; color:var(--muted); background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:7px 13px; cursor:pointer; font-family:var(--font); transition:border-color .2s,color .2s; }
+.ol-share-btn:hover { border-color:var(--cyan); color:var(--cyan); }
+
+/* ── CHAT + SIDEBAR ───────────────────────── */
+.ol-content-section { padding:24px 48px 0; }
+.ol-content-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 320px; gap:24px; }
+
+/* Chat box */
+.ol-chat-box { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; }
+.ol-chat-tabs { display:flex; border-bottom:1px solid var(--border); }
+.ol-chat-tab { flex:1; padding:13px; text-align:center; font-size:12px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px; transition:color .2s; }
+.ol-chat-tab.active { color:var(--cyan); border-bottom-color:var(--cyan); }
+.ol-chat-panel { display:none; flex-direction:column; }
+.ol-chat-panel.active { display:flex; }
+
+.ol-chat-msgs { flex:1; overflow-y:auto; padding:14px; display:flex; flex-direction:column; gap:10px; height:300px; }
+.ol-chat-msgs::-webkit-scrollbar { width:3px; }
+.ol-chat-msgs::-webkit-scrollbar-thumb { background:#dde4ee; border-radius:2px; }
+.ol-chat-msg { display:flex; gap:8px; align-items:flex-start; }
+.ol-c-ava { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; color:var(--navy); background:var(--bg3); flex-shrink:0; }
+.ol-c-ava.mod { background:linear-gradient(135deg,var(--cyan),var(--accent)); color:#fff; }
+.ol-c-name { font-size:11px; font-weight:700; color:var(--cyan); }
+.ol-c-name.mod { color:var(--accent); }
+.ol-c-time { font-size:10px; color:var(--muted); margin-left:6px; }
+.ol-c-text { font-size:12px; color:var(--navy); line-height:1.5; margin-top:2px; }
+.ol-chat-empty { height:300px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:var(--muted); font-size:13px; }
+.ol-chat-empty-icon { font-size:36px; opacity:.4; }
+
+.ol-chat-input-area { padding:12px; border-top:1px solid var(--border); background:var(--bg2); display:flex; gap:8px; }
+.ol-chat-inp { flex:1; font-family:var(--font); font-size:13px; color:var(--navy); background:#fff; border:1.5px solid var(--border); border-radius:9px; padding:9px 13px; outline:none; transition:border-color .2s; }
+.ol-chat-inp:focus { border-color:var(--cyan); }
+.ol-chat-inp::placeholder { color:var(--muted); }
+.ol-chat-send { width:38px; height:38px; background:var(--cyan); color:#fff; border:none; border-radius:9px; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:var(--font); transition:background .2s; }
+.ol-chat-send:hover { background:var(--cyan-dark); }
+
+/* Q&A panel */
+.ol-qa-list { height:300px; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:10px; }
+.ol-qa-list::-webkit-scrollbar { width:3px; }
+.ol-qa-list::-webkit-scrollbar-thumb { background:#dde4ee; border-radius:2px; }
+.ol-qa-hint { font-size:11px; color:var(--muted); line-height:1.5; padding:4px 2px 8px; }
+.ol-qa-item { background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:11px 13px; }
+.ol-qa-answered { border-left:3px solid var(--green); }
+.ol-qa-head { display:flex; align-items:center; justify-content:space-between; margin-bottom:5px; }
+.ol-qa-author { font-size:11px; font-weight:700; color:var(--muted); }
+.ol-qa-vote { font-size:11px; font-weight:700; color:var(--cyan); cursor:pointer; transition:color .2s; user-select:none; }
+.ol-qa-vote:hover { color:var(--cyan-dark); }
+.ol-qa-text { font-size:12px; color:var(--navy); line-height:1.5; }
+.ol-qa-answer { margin-top:7px; padding-top:7px; border-top:1px solid var(--border); font-size:12px; color:var(--muted); font-style:italic; }
+.ol-qa-answer b { color:var(--green); font-style:normal; }
+.ol-qa-form { padding:12px; border-top:1px solid var(--border); background:var(--bg2); display:flex; flex-direction:column; gap:8px; }
+.ol-qa-inp { font-family:var(--font); font-size:12px; color:var(--navy); background:#fff; border:1.5px solid var(--border); border-radius:8px; padding:9px 12px; outline:none; resize:none; transition:border-color .2s; }
+.ol-qa-inp:focus { border-color:var(--cyan); }
+.ol-qa-submit { background:var(--navy); color:#fff; font-family:var(--font); font-size:12px; font-weight:700; padding:10px; border:none; border-radius:8px; cursor:pointer; transition:background .2s; }
+.ol-qa-submit:hover { background:var(--navy2); }
+
+/* Sidebar */
+.ol-sidebar { display:flex; flex-direction:column; gap:18px; }
+.ol-sidebar-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); }
+.ol-sc-header { padding:14px 18px; border-bottom:1px solid var(--border); }
+.ol-sc-title { font-size:13px; font-weight:700; color:var(--navy); }
+.ol-sc-body { padding:16px 18px; display:flex; flex-direction:column; gap:12px; }
+
+/* Speakers sidebar */
+.ol-speaker-row { display:flex; gap:12px; align-items:center; }
+.ol-sp-ava { width:42px; height:42px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+.ol-sp-h { background:linear-gradient(135deg,var(--cyan),var(--accent)); }
+.ol-sp-g { background:var(--bg3); }
+.ol-sp-name { font-size:12px; font-weight:700; color:var(--navy); }
+.ol-sp-role { font-size:11px; color:var(--muted); }
+.ol-sp-badge { font-size:10px; font-weight:700; padding:2px 8px; border-radius:100px; }
+.ol-sp-badge-host  { background:var(--cyan-mid); color:var(--cyan); }
+.ol-sp-badge-guest { background:rgba(59,95,192,.1); color:var(--accent); }
+
+/* Program */
+.ol-prog-item { display:flex; gap:12px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--border); }
+.ol-prog-item:last-child { border-bottom:none; }
+.ol-prog-time { font-size:11px; font-weight:700; color:var(--cyan); width:42px; flex-shrink:0; padding-top:2px; }
+.ol-prog-dot { width:8px; height:8px; border-radius:50%; background:var(--border); margin-top:4px; flex-shrink:0; box-shadow:0 0 0 2px var(--border); }
+.ol-prog-h { font-size:12px; font-weight:700; color:var(--navy); }
+.ol-prog-p { font-size:11px; color:var(--muted); }
+
+/* Tech note */
+.ol-tech-note { display:flex; gap:10px; font-size:12px; color:var(--muted); line-height:1.6; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:14px 16px; }
+
+/* Pre-question form */
+.ol-prequestion { background:var(--bg3); border:1px solid var(--border); border-radius:var(--radius-lg); padding:18px; }
+.ol-pq-label { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.ol-pq-inp { width:100%; font-family:var(--font); font-size:12px; color:var(--navy); background:#fff; border:1.5px solid var(--border); border-radius:8px; padding:9px 12px; outline:none; resize:none; margin-bottom:8px; transition:border-color .2s; }
+.ol-pq-inp:focus { border-color:var(--cyan); }
+.ol-pq-submit { width:100%; background:var(--navy); color:#fff; font-family:var(--font); font-size:12px; font-weight:700; padding:10px; border:none; border-radius:8px; cursor:pointer; transition:background .2s; }
+.ol-pq-submit:hover { background:var(--navy2); }
+
+/* ── RECENT BROADCASTS ────────────────────── */
+.ol-recent-section { padding:48px 48px 68px; background:var(--bg2); border-top:1px solid var(--border); margin-top:36px; }
+.ol-recent-inner { max-width:1200px; margin:0 auto; }
+.ol-recent-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+.ol-recent-header h2 { font-family:var(--font-d); font-size:clamp(20px,2.5vw,26px); font-weight:700; color:var(--navy); }
+.ol-recent-header h2 em { font-style:italic; color:var(--cyan); }
+.ol-btn-link { font-size:13px; font-weight:600; color:var(--cyan); text-decoration:none; display:flex; align-items:center; gap:5px; transition:gap .18s; }
+.ol-btn-link:hover { gap:9px; }
+.ol-btn-link::after { content:'→'; }
+.ol-recent-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.ol-rec-card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-lg); overflow:hidden;
+  box-shadow:var(--shadow-sm); text-decoration:none; color:inherit;
+  display:flex; flex-direction:column;
+  transition:box-shadow .25s, transform .25s, border-color .25s;
+}
+.ol-rec-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-3px); border-color:rgba(0,184,198,.3); }
+.ol-rec-thumb { height:130px; display:flex; align-items:center; justify-content:center; font-size:38px; position:relative; overflow:hidden; }
+.ol-rec-overlay { position:absolute; inset:0; background:rgba(15,32,64,.45); display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .2s; }
+.ol-rec-card:hover .ol-rec-overlay { opacity:1; }
+.ol-play-btn { width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.95); display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--navy); }
+.ol-rec-tag { position:absolute; top:10px; left:10px; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; background:var(--navy); color:#fff; padding:3px 9px; border-radius:6px; }
+.ol-rec-dur { position:absolute; bottom:8px; right:8px; font-size:11px; font-weight:600; background:rgba(0,0,0,.65); color:#fff; padding:2px 7px; border-radius:5px; }
+.ol-rec-body { padding:14px 16px 16px; display:flex; flex-direction:column; gap:6px; flex:1; }
+.ol-rec-title { font-size:13px; font-weight:700; color:var(--navy); line-height:1.4; }
+.ol-rec-meta { display:flex; gap:10px; font-size:11px; color:var(--muted); margin-top:auto; padding-top:8px; border-top:1px solid var(--border); }
+
+/* DEV button */
+.ol-dev-btn { position:fixed; bottom:20px; right:20px; z-index:9999; background:var(--navy); color:#fff; font-family:var(--font); font-size:12px; font-weight:700; padding:10px 18px; border-radius:100px; border:none; cursor:pointer; box-shadow:var(--shadow-lg); transition:background .2s; }
+.ol-dev-btn:hover { background:var(--navy2); }
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media (max-width:960px) {
+  .ol-content-inner { grid-template-columns:1fr; }
+  .ol-recent-grid { grid-template-columns:repeat(2,1fr); }
+  .ol-hero-inner { flex-direction:column; align-items:flex-start; }
+  .ol-hero-right { align-items:flex-start; width:100%; }
+  .ol-hero-countdown { width:100%; }
+}
+@media (max-width:600px) {
+  .ol-hero, .ol-player-section, .ol-content-section, .ol-recent-section { padding-left:20px; padding-right:20px; }
+  .ol-live-bar { padding:10px 20px; }
+  .ol-recent-grid { grid-template-columns:1fr; }
+}

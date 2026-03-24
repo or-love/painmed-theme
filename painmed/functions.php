@@ -153,6 +153,23 @@ function painmed_enqueue_assets() {
 			true
 		);
 	}
+
+	// CSS и JS для страницы «Онлайн-эфиры» (шаблон page-online.php)
+	if ( is_page_template( 'page-online.php' ) ) {
+		wp_enqueue_style(
+			'painmed-online',
+			get_template_directory_uri() . '/assets/css/style-online.css',
+			array( 'painmed-style' ),
+			PAINMED_VERSION
+		);
+		wp_enqueue_script(
+			'painmed-online',
+			get_template_directory_uri() . '/assets/js/online.js',
+			array(),
+			PAINMED_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'painmed_enqueue_assets' );
 
