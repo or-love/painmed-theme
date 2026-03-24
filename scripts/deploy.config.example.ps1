@@ -1,5 +1,5 @@
 $ThemeSlug = 'painmed'
 $RemoteUser = 'orlove'
 $RemoteHost = 'orlove.beget.tech'
-$RemoteThemeDir = 'painmed.orlove.beget.tech/public_html/wp-content/themes/painmed'
-$RemoteBackupBaseDir = 'painmed.orlove.beget.tech/_theme_backups'
+$RemoteThemeDir = '/painmed.orlove.beget.tech/public_html/wp-content/themes/painmed'
+$RemoteBackupBaseDir = '/_theme_backups/painmed'
