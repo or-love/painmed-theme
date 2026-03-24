@@ -170,6 +170,23 @@ function painmed_enqueue_assets() {
 			true
 		);
 	}
+
+	// CSS и JS для страницы «Южная школа» (шаблон page-southern-school.php)
+	if ( is_page_template( 'page-southern-school.php' ) ) {
+		wp_enqueue_style(
+			'painmed-southern-school',
+			get_template_directory_uri() . '/assets/css/style-southern-school.css',
+			array( 'painmed-style' ),
+			PAINMED_VERSION
+		);
+		wp_enqueue_script(
+			'painmed-southern-school',
+			get_template_directory_uri() . '/assets/js/southern-school.js',
+			array(),
+			PAINMED_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'painmed_enqueue_assets' );
 
