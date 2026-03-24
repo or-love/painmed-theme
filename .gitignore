@@ -1,0 +1,8 @@
+backups/
+scripts/deploy.config.ps1
+*.zip
+*.log
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/

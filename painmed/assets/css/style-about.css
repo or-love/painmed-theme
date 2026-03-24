@@ -1,0 +1,381 @@
+/* ═════════════════════════════════════════════
+   STYLE-ABOUT.CSS — О проекте (10 секций)
+   ═════════════════════════════════════════════ */
+
+/* ── Utility ─────────────────────────────── */
+.abt-narrow { max-width: 800px; }
+.abt-prose p { font-size: 15px; color: var(--navy); line-height: 1.85; margin-bottom: 16px; }
+.abt-prose p:last-child { margin-bottom: 0; }
+.abt-prose-light p { color: rgba(255,255,255,.6); }
+
+/* ═══ 1. HERO ════════════════════════════════ */
+.abt-hero {
+  background: linear-gradient(155deg, #f0f6ff 0%, #e8f5f8 55%, #f4f7fb 100%);
+  padding: 48px 48px 64px;
+  border-bottom: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.abt-hero-dots {
+  position: absolute; inset: 0; pointer-events: none; opacity: .035;
+  background-image: radial-gradient(circle, var(--navy) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.abt-hero::after {
+  content: ''; position: absolute; right: -100px; top: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,198,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.abt-hero-inner { max-width: 800px; margin: 0 auto; position: relative; }
+
+.abt-crumbs { font-size: 12px; color: var(--muted); margin-bottom: 24px; display: flex; gap: 8px; }
+.abt-crumbs a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.abt-crumbs a:hover { color: var(--cyan); }
+
+/* Badges */
+.abt-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 100px; padding: 5px 16px;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  margin-bottom: 22px;
+}
+.abt-badge-cyan {
+  background: rgba(0,184,198,.1); border: 1px solid rgba(0,184,198,.2);
+  color: var(--cyan);
+}
+.abt-badge-dot {
+  background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.18);
+  color: #ef4444;
+}
+.abt-badge-dot::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: #ef4444; animation: abtBlink 1.6s infinite;
+}
+@keyframes abtBlink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+.abt-hero h1 {
+  font-family: var(--font-d); font-size: clamp(26px, 4vw, 42px);
+  font-weight: 700; line-height: 1.2; color: var(--navy); margin-bottom: 20px;
+}
+.abt-hero h1 em { font-style: italic; color: var(--cyan); }
+
+.abt-hero-desc {
+  font-size: 15px; color: var(--muted); line-height: 1.8;
+  max-width: 680px; margin-bottom: 36px;
+}
+
+.abt-stats-row { display: flex; gap: 40px; flex-wrap: wrap; }
+.abt-stat { display: flex; flex-direction: column; }
+.abt-stat-n { font-size: 28px; font-weight: 800; color: var(--navy); line-height: 1; }
+.abt-stat-n i { font-style: normal; color: var(--cyan); }
+.abt-stat-l { font-size: 11px; color: var(--muted); margin-top: 5px; }
+
+/* ═══ 2. МИССИЯ ══════════════════════════════ */
+.abt-mission { padding-top: 72px; padding-bottom: 72px; }
+
+/* ═══ 3. КРАСНАЯ НИТЬ ════════════════════════ */
+.abt-thread {
+  background: var(--navy);
+  padding: 72px 48px;
+  position: relative; overflow: hidden;
+}
+.abt-thread::after {
+  content: ''; position: absolute; right: -80px; bottom: -80px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,198,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.abt-thread-inner {
+  max-width: 700px; margin: 0 auto; position: relative;
+}
+.abt-thread h2 {
+  font-family: var(--font-d); font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 16px;
+}
+.abt-thread h2 em { font-style: italic; color: var(--cyan); }
+.abt-thread-desc {
+  font-size: 15px; color: rgba(255,255,255,.55); line-height: 1.75; margin-bottom: 28px;
+}
+.abt-thread-list {
+  list-style: none; display: flex; flex-direction: column; gap: 14px;
+}
+.abt-thread-list li {
+  font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.5;
+  padding-left: 22px; position: relative;
+}
+.abt-thread-list li::before {
+  content: ''; position: absolute; left: 0; top: 7px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--cyan);
+}
+
+/* ═══ 4. ИСТОРИЯ (таймлайн) ══════════════════ */
+.abt-history {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.abt-tl {
+  position: relative; padding-left: 90px; margin-top: 36px;
+}
+.abt-tl::before {
+  content: ''; position: absolute; left: 72px; top: 0; bottom: 0;
+  width: 2px; background: var(--border);
+}
+.abt-tl-item {
+  position: relative; padding: 0 0 40px 32px;
+}
+.abt-tl-item:last-child { padding-bottom: 0; }
+.abt-tl-dot {
+  position: absolute; left: -21px; top: 4px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--bg2); border: 3px solid var(--cyan);
+}
+.abt-tl-dot-now {
+  background: var(--cyan); border-color: var(--cyan);
+  box-shadow: 0 0 0 5px rgba(0,184,198,.18);
+}
+.abt-tl-year {
+  position: absolute; left: -90px; top: 0;
+  width: 60px; text-align: right;
+  font-size: 13px; font-weight: 800; color: var(--cyan);
+}
+.abt-tl-content h4 {
+  font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px;
+}
+.abt-tl-content p {
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+}
+
+/* ═══ 5. ПРОФЕССОР ИСКРА ═════════════════════ */
+.abt-iskra {
+  background: var(--navy);
+  padding: 72px 48px;
+  position: relative; overflow: hidden;
+}
+.abt-iskra::before {
+  content: ''; position: absolute; left: -100px; top: -100px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,198,.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.abt-iskra-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 360px 1fr;
+  gap: 48px; align-items: start;
+  position: relative;
+}
+
+/* Карточка */
+.abt-iskra-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: var(--radius-lg);
+  padding: 28px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.abt-iskra-avatar {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--accent));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 800; color: #fff;
+  box-shadow: 0 4px 20px rgba(0,184,198,.3);
+}
+.abt-iskra-info { text-align: center; }
+.abt-iskra-info h3 {
+  font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px;
+}
+.abt-iskra-title {
+  font-size: 12px; color: rgba(255,255,255,.5); line-height: 1.5; margin-bottom: 14px;
+}
+.abt-iskra-badges {
+  display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 16px;
+}
+.abt-iskra-badges span {
+  font-size: 10px; font-weight: 700; letter-spacing: .05em;
+  color: var(--cyan); background: rgba(0,184,198,.1);
+  border: 1px solid rgba(0,184,198,.2);
+  padding: 3px 10px; border-radius: 6px;
+}
+.abt-iskra-feats {
+  list-style: none; text-align: left;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.abt-iskra-feats li {
+  font-size: 12px; color: rgba(255,255,255,.6);
+  padding-left: 18px; position: relative;
+}
+.abt-iskra-feats li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--cyan); font-weight: 700;
+}
+
+/* Текст рядом */
+.abt-iskra-quote {
+  font-family: var(--font-d);
+  font-size: 16px; font-style: italic; color: rgba(255,255,255,.7);
+  line-height: 1.7;
+  border-left: 3px solid var(--cyan);
+  padding: 16px 20px;
+  background: rgba(0,184,198,.05);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 24px 0;
+}
+
+/* ═══ 6. СООБЩЕСТВО ══════════════════════════ */
+.abt-community { border-bottom: 1px solid var(--border); }
+
+.abt-geo-tags {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin: 24px 0 32px;
+}
+.abt-geo {
+  font-size: 12px; font-weight: 600; color: var(--navy);
+  background: var(--bg2); border: 1px solid var(--border);
+  padding: 5px 14px; border-radius: 8px;
+}
+.abt-geo-more {
+  color: var(--cyan); background: rgba(0,184,198,.06);
+  border-color: rgba(0,184,198,.2);
+}
+
+.abt-community-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.abt-cm-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+}
+.abt-cm-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); border-color: rgba(0,184,198,.3); }
+.abt-cm-icon { font-size: 28px; }
+.abt-cm-num { font-size: 22px; font-weight: 800; color: var(--navy); }
+.abt-cm-label { font-size: 11px; color: var(--muted); }
+
+/* ═══ 7. ЭКОСИСТЕМА ══════════════════════════ */
+.abt-eco {
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.abt-eco-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-top: 28px;
+}
+.abt-eco-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+  text-align: center; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s, border-color .25s, transform .25s;
+}
+.abt-eco-card:hover { box-shadow: var(--shadow-lg); border-color: var(--cyan); transform: translateY(-3px); }
+.abt-eco-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--bg2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: var(--muted);
+  transition: background .2s, color .2s;
+}
+.abt-eco-card:hover .abt-eco-icon { background: rgba(0,184,198,.1); color: var(--cyan); border-color: rgba(0,184,198,.2); }
+.abt-eco-icon-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--accent));
+  color: #fff; border: none;
+}
+.abt-eco-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); }
+.abt-eco-card p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+/* ═══ 8. ПАРТНЁРЫ ════════════════════════════ */
+.abt-partners-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+  margin: 28px 0 20px;
+}
+.abt-partner-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius); height: 80px;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color .2s;
+}
+.abt-partner-card:hover { border-color: rgba(0,184,198,.3); }
+.abt-partner-logo {
+  font-size: 12px; font-weight: 600; color: var(--muted); opacity: .6;
+}
+.abt-partners-note {
+  font-size: 12px; color: var(--muted); font-style: italic;
+  text-align: center;
+}
+
+/* ═══ 9. ФОРМАТЫ ═════════════════════════════ */
+.abt-formats {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.abt-formats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  margin-top: 28px;
+}
+.abt-fmt-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 28px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s, border-color .25s, transform .25s;
+}
+.abt-fmt-card:hover { box-shadow: var(--shadow-lg); border-color: var(--cyan); transform: translateY(-3px); }
+.abt-fmt-icon { font-size: 32px; }
+.abt-fmt-card h4 { font-size: 15px; font-weight: 700; color: var(--navy); }
+.abt-fmt-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.abt-formats-cta { text-align: center; margin-top: 32px; }
+
+/* ═══ 10. CTA ════════════════════════════════ */
+.abt-cta {
+  background: linear-gradient(135deg, #0f2040 0%, #1a3260 60%, #0f2040 100%);
+  padding: 72px 48px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.abt-cta::before {
+  content: ''; position: absolute; left: -80px; top: -80px;
+  width: 380px; height: 380px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,198,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.abt-cta-inner { max-width: 600px; margin: 0 auto; position: relative; }
+.abt-cta h2 {
+  font-family: var(--font-d); font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 12px;
+}
+.abt-cta h2 em { font-style: italic; color: var(--cyan); }
+.abt-cta p { font-size: 14px; color: rgba(255,255,255,.5); margin-bottom: 28px; }
+.abt-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ═══ RESPONSIVE ═════════════════════════════ */
+@media (max-width: 960px) {
+  .abt-iskra-inner { grid-template-columns: 1fr; }
+  .abt-iskra-card { max-width: 400px; margin: 0 auto; }
+  .abt-community-grid, .abt-eco-grid { grid-template-columns: repeat(2, 1fr); }
+  .abt-partners-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .abt-hero, .abt-thread, .abt-iskra, .abt-cta { padding-left: 20px; padding-right: 20px; }
+  .abt-stats-row { gap: 24px; }
+  .abt-stat-n { font-size: 22px; }
+  .abt-tl { padding-left: 70px; }
+  .abt-tl::before { left: 52px; }
+  .abt-tl-year { left: -70px; width: 48px; font-size: 11px; }
+  .abt-tl-dot { left: -18px; }
+  .abt-formats-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 580px) {
+  .abt-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .abt-community-grid, .abt-eco-grid { grid-template-columns: 1fr 1fr; }
+  .abt-partners-grid { grid-template-columns: 1fr 1fr; }
+  .abt-iskra-card { max-width: 100%; }
+}

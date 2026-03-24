@@ -1,0 +1,328 @@
+/* ═════════════════════════════════════════════
+   STYLE-EFIRY.CSS — Архив + Карточка эфира
+   ═════════════════════════════════════════════ */
+
+/* ── HERO ────────────────────────────────── */
+.ef-hero {
+  background: linear-gradient(155deg, #0f2040 0%, #1a3260 50%, #0f2040 100%);
+  padding: 64px 48px 52px;
+  position: relative; overflow: hidden;
+}
+.ef-hero::after {
+  content: ''; position: absolute; right: -80px; top: -80px;
+  width: 440px; height: 440px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,184,198,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ef-hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+.ef-hero h1 {
+  font-family: var(--font-d); font-size: clamp(28px, 4vw, 46px);
+  font-weight: 700; line-height: 1.15; color: #fff; margin-bottom: 14px;
+}
+.ef-hero h1 span { color: var(--cyan); }
+.ef-hero-sub { font-size: 15px; color: rgba(255,255,255,.5); max-width: 520px; line-height: 1.7; }
+
+/* ── FILTERS ─────────────────────────────── */
+.ef-filters {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 36px;
+  padding: 5px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.ef-filter-btn {
+  font-family: var(--font);
+  font-size: 12px; font-weight: 600;
+  color: var(--muted);
+  padding: 8px 16px; border-radius: 8px;
+  text-decoration: none;
+  transition: background .2s, color .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.ef-filter-btn:hover { color: var(--navy); background: rgba(255,255,255,.6); }
+.ef-filter-btn.active {
+  background: #fff; color: var(--cyan);
+  box-shadow: var(--shadow-sm);
+}
+
+.ef-section-label { margin-bottom: 24px; }
+
+/* ── GRID ────────────────────────────────── */
+.ef-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ── UPCOMING CARDS ──────────────────────── */
+.ef-card-upcoming {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  box-shadow: var(--shadow-sm); text-decoration: none; color: inherit;
+  position: relative;
+  transition: box-shadow .25s, border-color .25s, transform .25s;
+}
+.ef-card-upcoming:hover { box-shadow: var(--shadow-lg); border-color: var(--cyan); transform: translateY(-3px); }
+.ef-card-upcoming .ef-card-top-line {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--cyan), #0ea5e9);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+.ef-card-live {
+  background: linear-gradient(145deg, #0f2040, #1a3260);
+  border-color: rgba(0,184,198,.35);
+}
+.ef-card-live .ef-card-top-line { background: linear-gradient(90deg, #ef4444, #f59e0b); }
+.ef-card-live h3 { color: #fff; }
+.ef-card-live .ef-card-speaker,
+.ef-card-live .ef-card-meta { color: rgba(255,255,255,.5); }
+.ef-card-live .ef-card-format { color: rgba(255,255,255,.4); }
+.ef-card-live .btn-link { color: var(--cyan); }
+
+.ef-card-header { display: flex; align-items: center; justify-content: space-between; }
+.ef-card-emoji { font-size: 24px; }
+.ef-card-status {
+  font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.status-upcoming { background: rgba(245,158,11,.1); color: #b86010; }
+.status-live     { background: rgba(239,68,68,.15); color: #ef4444; }
+.status-archive  { background: rgba(14,168,122,.1); color: #0a8a62; }
+
+.ef-pulse {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor;
+  animation: ef-blink 1.4s infinite;
+}
+@keyframes ef-blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+.ef-card-upcoming h3 { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+.ef-card-speaker { font-size: 12px; color: var(--muted); }
+.ef-card-meta { font-size: 12px; color: var(--muted); display: flex; gap: 14px; flex-wrap: wrap; }
+.ef-card-footer {
+  margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.ef-card-live .ef-card-footer { border-color: rgba(255,255,255,.08); }
+.ef-card-format { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+/* ── ARCHIVE CARDS ───────────────────────── */
+.ef-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow-sm); text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  transition: box-shadow .2s, transform .2s, border-color .2s;
+}
+.ef-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: rgba(0,184,198,.3); }
+.ef-card-thumb {
+  height: 140px; display: flex; align-items: center; justify-content: center;
+  font-size: 36px; position: relative; overflow: hidden;
+}
+.ef-card-tag {
+  position: absolute; top: 12px; left: 12px;
+  font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  background: var(--navy); color: #fff;
+  padding: 4px 10px; border-radius: 6px;
+}
+.ef-card-body { padding: 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ef-card-body h3 { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.4; }
+
+/* ── PAGINATION ──────────────────────────── */
+.ef-pagination {
+  margin-top: 36px; text-align: center;
+}
+.ef-pagination ul {
+  list-style: none; display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;
+}
+.ef-pagination li { display: inline; }
+.ef-pagination a,
+.ef-pagination span {
+  display: inline-block;
+  padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.ef-pagination a {
+  color: var(--muted); background: var(--bg2); border: 1px solid var(--border);
+}
+.ef-pagination a:hover { background: var(--cyan); color: #fff; border-color: var(--cyan); }
+.ef-pagination .current {
+  background: var(--cyan); color: #fff; border: 1px solid var(--cyan);
+}
+
+.ef-empty {
+  text-align: center; padding: 48px; color: var(--muted);
+  font-size: 15px;
+}
+
+/* ═════════════════════════════════════════════
+   SINGLE EFIR
+   ═════════════════════════════════════════════ */
+
+/* ── BREADCRUMBS ─────────────────────────── */
+.ef-breadcrumbs {
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 12px 48px; font-size: 12px; color: var(--muted);
+}
+.ef-breadcrumbs-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 8px; align-items: center; }
+.ef-breadcrumbs a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.ef-breadcrumbs a:hover { color: var(--cyan); }
+.ef-bc-current { color: var(--navy); font-weight: 600; }
+
+/* ── LAYOUT ──────────────────────────────── */
+.ef-single-layout {
+  display: grid; grid-template-columns: 1fr 300px;
+  gap: 36px; align-items: start;
+}
+
+/* ── MAIN CONTENT ────────────────────────── */
+.ef-single-status {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 8px; margin-bottom: 16px;
+}
+.ef-single-title {
+  font-family: var(--font-d); font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700; line-height: 1.2; color: var(--navy); margin-bottom: 24px;
+}
+
+.ef-single-meta-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px 24px; margin-bottom: 28px;
+  padding: 20px; border-radius: var(--radius);
+  background: var(--bg2); border: 1px solid var(--border);
+}
+.ef-smeta { display: flex; flex-direction: column; gap: 3px; }
+.ef-smeta-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.ef-smeta-value { font-size: 14px; font-weight: 600; color: var(--navy); }
+
+/* ── LIVE BANNER ─────────────────────────── */
+.ef-live-banner {
+  background: linear-gradient(135deg, #0f2040, #1a3260);
+  border: 1.5px solid rgba(239,68,68,.3);
+  border-radius: var(--radius-lg);
+  padding: 28px; margin-bottom: 28px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.ef-live-indicator {
+  font-size: 13px; font-weight: 700; color: #ef4444;
+  display: flex; align-items: center; gap: 8px;
+}
+.ef-btn-watch {
+  font-size: 15px; padding: 14px 36px;
+  box-shadow: 0 4px 20px rgba(0,184,198,.35);
+}
+
+/* ── VIDEO EMBED ─────────────────────────── */
+.ef-video-wrap {
+  position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  border-radius: var(--radius-lg); margin-bottom: 28px;
+  background: #000; box-shadow: var(--shadow-lg);
+}
+.ef-video-wrap iframe {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  border: none;
+}
+
+/* ── UPCOMING COUNTDOWN ──────────────────── */
+.ef-upcoming-banner {
+  background: linear-gradient(135deg, #0f2040, #1a3260);
+  border: 1.5px solid rgba(0,184,198,.25);
+  border-radius: var(--radius-lg);
+  padding: 32px; margin-bottom: 28px;
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+.ef-upcoming-label {
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--cyan);
+}
+.ef-upcoming-countdown {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; max-width: 320px; width: 100%;
+}
+.efc-block {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px; padding: 12px 8px; text-align: center;
+}
+.efc-num {
+  font-size: 24px; font-weight: 800; color: #fff;
+  line-height: 1; display: block; font-variant-numeric: tabular-nums;
+}
+.efc-label { font-size: 10px; color: rgba(255,255,255,.4); margin-top: 4px; display: block; }
+
+/* ── CONTENT ─────────────────────────────── */
+.ef-single-content {
+  font-size: 15px; color: var(--navy); line-height: 1.8;
+}
+.ef-single-content p { margin-bottom: 16px; }
+.ef-single-content h2, .ef-single-content h3 {
+  font-family: var(--font-d); color: var(--navy); margin: 28px 0 12px;
+}
+.ef-single-content ul, .ef-single-content ol {
+  margin-left: 24px; margin-bottom: 16px;
+}
+.ef-single-content li { margin-bottom: 6px; }
+
+/* ── SIDEBAR ─────────────────────────────── */
+.ef-sidebar {
+  display: flex; flex-direction: column; gap: 20px;
+  position: sticky; top: 86px; /* sticky nav + padding */
+}
+.ef-sidebar-block {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px;
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.ef-sidebar-block h4 {
+  font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+}
+.ef-sidebar-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  text-decoration: none; color: inherit;
+  padding: 10px; border-radius: 8px;
+  transition: background .2s;
+}
+.ef-sidebar-item:hover { background: var(--bg2); }
+.ef-sidebar-emoji { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.ef-sidebar-item-body { display: flex; flex-direction: column; gap: 2px; }
+.ef-sidebar-item-body strong { font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.35; }
+.ef-sidebar-item-body span { font-size: 11px; color: var(--muted); }
+.ef-sidebar-live {
+  display: inline-block;
+  font-size: 9px; font-weight: 800; letter-spacing: .08em;
+  color: #ef4444; background: rgba(239,68,68,.1);
+  padding: 1px 6px; border-radius: 4px;
+  margin-left: 6px;
+}
+.ef-sidebar-empty { font-size: 13px; color: var(--muted); font-style: italic; }
+.ef-sidebar-link {
+  display: block; padding: 8px 12px; border-radius: 8px;
+  font-size: 13px; font-weight: 600; color: var(--navy);
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.ef-sidebar-link:hover { background: var(--bg2); color: var(--cyan); }
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 960px) {
+  .ef-grid { grid-template-columns: repeat(2, 1fr); }
+  .ef-single-layout { grid-template-columns: 1fr; }
+  .ef-sidebar { position: static; }
+}
+@media (max-width: 680px) {
+  .ef-hero { padding: 40px 20px 36px; }
+  .ef-breadcrumbs { padding: 10px 20px; }
+  .ef-grid { grid-template-columns: 1fr; }
+  .ef-single-meta-grid { grid-template-columns: 1fr; }
+  .ef-filters { gap: 4px; }
+  .ef-filter-btn { font-size: 11px; padding: 6px 12px; }
+}
