@@ -22,6 +22,7 @@ $stamp = Get-Date -Format 'yyyy-MM-dd_HHmmss'
 $remoteTempDir = "${RemoteThemeDir}.__new__${stamp}"
 $remoteBackupDir = "${RemoteBackupBaseDir}/${ThemeSlug}-${stamp}"
 $remoteLogin = "${RemoteUser}@${RemoteHost}"
+$remoteThemeParentDir = ($RemoteThemeDir -replace '/[^/]+$','')
 
 Write-Host ('Local theme: ' + $localThemeDir)
 Write-Host ('Server: ' + $remoteLogin)
@@ -41,17 +42,15 @@ if ($confirmation -ne 'YES') {
 
 Write-Host ''
 Write-Host 'Step 1/3. Preparing folders on the server...' -ForegroundColor Cyan
-& ssh $remoteLogin "mkdir -p '$RemoteBackupBaseDir' '$remoteTempDir'"
+& ssh $remoteLogin "mkdir -p '$RemoteBackupBaseDir' '$remoteThemeParentDir'"
 if ($LASTEXITCODE -ne 0) {
     throw 'Failed to prepare folders on the server.'
 }
 
 Write-Host 'Step 2/3. Uploading theme files...' -ForegroundColor Cyan
-Get-ChildItem -Force $localThemeDir | ForEach-Object {
-    & scp -r $_.FullName "${remoteLogin}:$remoteTempDir/"
-    if ($LASTEXITCODE -ne 0) {
-        throw ('Upload failed for: ' + $_.Name)
-    }
+& scp -r $localThemeDir "${remoteLogin}:$remoteTempDir"
+if ($LASTEXITCODE -ne 0) {
+    throw 'Upload failed.'
 }
 
 $remoteSwapCommand = @"
