@@ -49,7 +49,7 @@ get_header();
         </div>
         <h3>6-я Южная школа коморбидной патологии — Волгоград, Ростов, Краснодар</h3>
         <div class="event-card-meta"><span>🌊 Южная школа</span><span>⏱ 4 часа</span></div>
-        <a href="#" class="btn-outline">Узнать даты и города</a>
+        <a href="/southern-school/" class="btn-outline">Узнать даты и города</a>
       </div>
 
       <!-- СЛЕДУЮЩЕЕ МЕРОПРИЯТИЕ — countdown card -->
@@ -234,7 +234,7 @@ get_header();
           </div>
           <div class="sc-footer">
             <span class="sc-next">Следующий цикл: <strong>апрель 2026</strong></span>
-            <a href="#" class="btn-link">Подробнее</a>
+            <a href="/southern-school/" class="btn-link">Подробнее</a>
           </div>
         </div>
       </div>
@@ -252,7 +252,7 @@ get_header();
           </div>
           <div class="sc-footer">
             <span class="sc-next">Следующий цикл: <strong>осень 2026</strong></span>
-            <a href="#" class="btn-link">Подробнее</a>
+            <a href="/eastern-school/" class="btn-link">Подробнее</a>
           </div>
         </div>
       </div>
@@ -266,7 +266,7 @@ get_header();
           <div class="ev-city-chips"><span class="ev-chip">Санкт-Петербург</span></div>
           <div class="sc-footer">
             <span class="sc-next">Ближайшая встреча: <strong>уточняется</strong></span>
-            <a href="#" class="btn-link">Подробнее</a>
+            <a href="/spb-school/" class="btn-link">Подробнее</a>
           </div>
         </div>
       </div>
@@ -283,7 +283,7 @@ get_header();
           </div>
           <div class="sc-footer">
             <span class="sc-next">Ближайшая встреча: <strong>2026</strong></span>
-            <a href="#" class="btn-link">Подробнее</a>
+            <a href="/moscow-school/" class="btn-link">Подробнее</a>
           </div>
         </div>
       </div>

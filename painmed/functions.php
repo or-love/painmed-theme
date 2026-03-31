@@ -204,6 +204,40 @@ function painmed_enqueue_assets() {
 			true
 		);
 	}
+
+	// CSS и JS для страницы «Петербуржские вечера» (шаблон page-spb-school.php)
+	if ( is_page_template( 'page-spb-school.php' ) ) {
+		wp_enqueue_style(
+			'painmed-spb-school',
+			get_template_directory_uri() . '/assets/css/style-spb-school.css',
+			array( 'painmed-style' ),
+			PAINMED_VERSION
+		);
+		wp_enqueue_script(
+			'painmed-spb-school',
+			get_template_directory_uri() . '/assets/js/spb-school.js',
+			array(),
+			PAINMED_VERSION,
+			true
+		);
+	}
+
+	// CSS и JS для страницы «Восточная школа» (шаблон page-eastern-school.php)
+	if ( is_page_template( 'page-eastern-school.php' ) ) {
+		wp_enqueue_style(
+			'painmed-eastern-school',
+			get_template_directory_uri() . '/assets/css/style-eastern-school.css',
+			array( 'painmed-style' ),
+			PAINMED_VERSION
+		);
+		wp_enqueue_script(
+			'painmed-eastern-school',
+			get_template_directory_uri() . '/assets/js/eastern-school.js',
+			array(),
+			PAINMED_VERSION,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'painmed_enqueue_assets' );
 
