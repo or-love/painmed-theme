@@ -15,8 +15,8 @@ get_header();
   <div class="hero-bg-dots"></div>
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-badge">Новый совет экспертов</div>
-      <h1>PAINMED — Современная<br>образовательная платформа<br>для <em>врачей</em></h1>
+      <div class="hero-badge">Сезон IX · 2026 · НЭСПРИМ × СЗОИБ</div>
+      <h1>Painmed — современная<br>образовательная платформа<br>для <em>врачей</em></h1>
       <p class="hero-sub">Образовательная платформа для практикующих врачей. Прямые эфиры с ведущими экспертами России, архив трансляций и клинические разборы.</p>
       <div class="hero-actions">
         <a href="https://painmed.ru/online/" class="btn-primary">Смотреть эфиры</a>
@@ -56,9 +56,9 @@ get_header();
   <div class="section-inner">
     <div class="section-header-row">
       <div>
-        <div class="section-label">Форматы</div>
-        <h2 class="section-title">Наши <em>мероприятия</em></h2>
-        <p class="section-desc">Онлайн-эфиры и очные школы — 6 форматов для профессионального роста</p>
+        <div class="section-label">§ 01 ── Форматы</div>
+        <h2 class="section-title">Шесть форматов <em>обучения</em></h2>
+        <p class="section-desc">Онлайн-эфиры и очные школы — построенные вокруг практики, а не лекций</p>
       </div>
       <a href="/meropriyatiya/" class="btn-link">Все мероприятия</a>
     </div>
@@ -156,8 +156,8 @@ get_header();
 <section class="ai-section">
   <div class="ai-inner">
     <div class="ai-left">
-      <div class="ai-label">🤖 Медицинский ИИ-Консультант</div>
-      <h2>Клинические решения<br>с поддержкой <em>искусственного интеллекта</em></h2>
+      <div class="ai-label">§ 02 ── ИИ-Консультант</div>
+      <h2>Коллега, который<br><em>не спит</em> и читал всё</h2>
       <p>ИИ-Консультант Painmed обучен на актуальных клинических рекомендациях и помогает врачам в сложных клинических ситуациях — 24/7, на русском языке.</p>
       <div class="ai-features">
         <div class="ai-feat">Ответы на медицинские вопросы из клинических рекомендаций</div>
@@ -165,7 +165,7 @@ get_header();
         <div class="ai-feat">Помощь в принятии обоснованных клинических решений</div>
         <div class="ai-feat">Мультиязычная поддержка, доступна 24/7</div>
       </div>
-      <a href="/ai-consultant/" class="btn-primary-outline">Попробовать ИИ-Консультант</a>
+      <a href="#" class="btn-primary-outline">Попробовать ИИ-Консультант</a>
     </div>
     <div class="ai-right">
       <div class="ai-chat">
@@ -193,9 +193,9 @@ get_header();
 <section class="section benefits">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">Для зарегистрированных врачей</div>
-      <h2 class="section-title">Преимущества <em>регистрации</em></h2>
-      <p class="section-desc">Бесплатно для всех врачей при условии регистрации</p>
+      <div class="section-label">§ 03 ── Преимущества</div>
+      <h2 class="section-title">Бесплатно для <em>врачей</em> при условии регистрации</h2>
+      <p class="section-desc">Доступ к эфирам, архиву и членству в СЗОИБ — без платы, навсегда</p>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
@@ -222,7 +222,7 @@ get_header();
   <div class="section-inner">
     <div class="section-header-row">
       <div>
-        <div class="section-label">Видеоархив</div>
+        <div class="section-label">§ 04 ── Видеоархив</div>
         <h2 class="section-title">Последние <em>трансляции</em></h2>
       </div>
       <a href="/arhiv/" class="btn-link">Весь архив</a>
@@ -279,7 +279,7 @@ get_header();
 <section class="membership-cta">
   <div class="membership-inner">
     <div class="membership-left">
-      <h2>Станьте членом <em>СЗОИБ</em></h2>
+      <h2>Регистрация — 90 секунд.<br><em>Доступ — навсегда</em></h2>
       <p>Присоединяйтесь к профессиональному сообществу врачей и получите доступ ко всем образовательным материалам платформы Painmed</p>
     </div>
     <div class="membership-actions">
@@ -293,7 +293,7 @@ get_header();
 <section class="section testimonials">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">Отзывы коллег</div>
+      <div class="section-label">§ 05 ── Отзывы коллег</div>
       <h2 class="section-title">Что говорят <em>врачи</em></h2>
     </div>
     <div class="testimonials-grid">
@@ -335,7 +335,7 @@ get_header();
 <section class="section">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-label">При поддержке</div>
+      <div class="section-label">§ 06 ── При поддержке</div>
       <h2 class="section-title">Наши <em>партнёры</em></h2>
     </div>
     <div class="supporters-grid">

@@ -4,15 +4,19 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-mark">P</div>
-          <span class="footer-logo-text">PAINMED.RU</span>
+          <span class="footer-logo-mark" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 22 22" fill="none">
+              <path d="M5 11h4l1.5-4 2 8 1.5-4h3" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="footer-logo-text">Painmed</span>
         </div>
         <p>Современная образовательная платформа для практикующих врачей. При поддержке СЗОИБ и НЭСПРИМ.</p>
         <div class="footer-social">
-          <a href="https://vk.com/protivboli" target="_blank" rel="noopener">ВК</a>
-          <a href="https://www.youtube.com/@СЗОИБ" target="_blank" rel="noopener">YT</a>
-          <a href="https://vkvideo.ru/@protivboli" target="_blank" rel="noopener">VKv</a>
-          <a href="https://rutube.ru/channel/24339226" target="_blank" rel="noopener">RT</a>
+          <a href="https://vk.com/protivboli" target="_blank" rel="noopener">VK ↗</a>
+          <a href="https://www.youtube.com/@СЗОИБ" target="_blank" rel="noopener">YouTube ↗</a>
+          <a href="https://vkvideo.ru/@protivboli" target="_blank" rel="noopener">VKvideo ↗</a>
+          <a href="https://rutube.ru/channel/24339226" target="_blank" rel="noopener">RuTube ↗</a>
         </div>
       </div>
 
@@ -54,11 +58,11 @@
     </div>
 
     <div class="footer-bottom">
-      <span>&copy; <?php echo date( 'Y' ); ?> PAINMED.RU &middot; Все права защищены</span>
+      <span>&copy; <?php echo date( 'Y' ); ?> painmed.ru &middot; Сезон IX &middot; Все права защищены</span>
       <span>
-        <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>" style="color:inherit;text-decoration:none;">Политика конфиденциальности</a>
+        <a href="<?php echo esc_url( get_privacy_policy_url() ); ?>">Политика конфиденциальности</a>
         &nbsp;&middot;&nbsp;
-        <a href="#" style="color:inherit;text-decoration:none;">Пользовательское соглашение</a>
+        <a href="#">Пользовательское соглашение</a>
       </span>
     </div>
   </div>
