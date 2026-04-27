@@ -119,7 +119,7 @@ get_header();
         </div>
         <div class="ev-format-footer">
           <span class="format-count">Выпусков: <strong>60+</strong></span>
-          <a href="#" class="btn-link">Смотреть эфиры</a>
+          <a href="/arhiv/" class="btn-link">Смотреть эфиры</a>
         </div>
       </div>
 
@@ -144,7 +144,7 @@ get_header();
         </div>
         <div class="ev-format-footer">
           <span class="format-count">Выпусков: <strong>20+</strong></span>
-          <a href="#" class="btn-link">Смотреть игры</a>
+          <a href="/arhiv/" class="btn-link">Смотреть игры</a>
         </div>
       </div>
 
@@ -169,7 +169,7 @@ get_header();
         </div>
         <div class="ev-format-footer">
           <span class="format-count">Выпусков: <strong>15+</strong></span>
-          <a href="#" class="btn-link">Смотреть выпуски</a>
+          <a href="/arhiv/" class="btn-link">Смотреть выпуски</a>
         </div>
       </div>
 
@@ -194,7 +194,7 @@ get_header();
         </div>
         <div class="ev-format-footer">
           <span class="format-count">Выпусков: <strong>10+</strong></span>
-          <a href="#" class="btn-link">Смотреть диалоги</a>
+          <a href="/arhiv/" class="btn-link">Смотреть диалоги</a>
         </div>
       </div>
 

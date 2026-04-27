@@ -165,7 +165,7 @@ get_header();
         <div class="ai-feat">Помощь в принятии обоснованных клинических решений</div>
         <div class="ai-feat">Мультиязычная поддержка, доступна 24/7</div>
       </div>
-      <a href="#" class="btn-primary-outline">Попробовать ИИ-Консультант</a>
+      <a href="/ai-consultant/" class="btn-primary-outline">Попробовать ИИ-Консультант</a>
     </div>
     <div class="ai-right">
       <div class="ai-chat">

@@ -127,6 +127,27 @@ function painmed_enqueue_assets() {
 		) );
 	}
 
+	// CSS и JS для страницы «Личный кабинет» (шаблон page-account.php)
+	if ( is_page_template( 'page-account.php' ) ) {
+		wp_enqueue_style(
+			'painmed-account',
+			get_template_directory_uri() . '/assets/css/style-account.css',
+			array( 'painmed-style' ),
+			PAINMED_VERSION
+		);
+		wp_enqueue_script(
+			'painmed-account',
+			get_template_directory_uri() . '/assets/js/account.js',
+			array(),
+			PAINMED_VERSION,
+			true
+		);
+		wp_localize_script( 'painmed-account', 'painmedAccount', array(
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'painmed_account_nonce' ),
+		) );
+	}
+
 	// CSS для страницы «О проекте» (шаблон page-about.php)
 	if ( is_page_template( 'page-about.php' ) ) {
 		wp_enqueue_style(
@@ -575,7 +596,186 @@ function painmed_get_embed_url( $url ) {
 
 
 /* ──────────────────────────────────────────
-   9. AJAX — АРХИВ ТРАНСЛЯЦИЙ (фильтрация + load more)
+   9. ЛИЧНЫЙ КАБИНЕТ — сохранение профиля
+   ────────────────────────────────────────── */
+function painmed_save_profile() {
+	check_ajax_referer( 'painmed_account_nonce', 'nonce' );
+
+	if ( ! is_user_logged_in() ) {
+		wp_send_json_error( 'Необходима авторизация' );
+	}
+
+	$user_id     = get_current_user_id();
+	$last_name   = sanitize_text_field( isset( $_POST['last_name'] )   ? $_POST['last_name']   : '' );
+	$first_name  = sanitize_text_field( isset( $_POST['first_name'] )  ? $_POST['first_name']  : '' );
+	$middle_name = sanitize_text_field( isset( $_POST['middle_name'] ) ? $_POST['middle_name'] : '' );
+	$email       = sanitize_email(      isset( $_POST['email'] )       ? $_POST['email']       : '' );
+	$spec        = sanitize_text_field( isset( $_POST['spec'] )        ? $_POST['spec']        : '' );
+	$city        = sanitize_text_field( isset( $_POST['city'] )        ? $_POST['city']        : '' );
+	$szoib       = isset( $_POST['szoib'] ) && $_POST['szoib'] === '1' ? '1' : '0';
+	$pass        = isset( $_POST['password'] ) ? $_POST['password'] : '';
+
+	if ( ! $last_name || ! $first_name || ! $email ) {
+		wp_send_json_error( 'Фамилия, имя и email обязательны' );
+	}
+
+	// Проверяем, не занят ли email другим пользователем
+	$existing = get_user_by( 'email', $email );
+	if ( $existing && $existing->ID !== $user_id ) {
+		wp_send_json_error( 'Этот email уже используется другим аккаунтом' );
+	}
+
+	$display_name = trim( $last_name . ' ' . $first_name . ( $middle_name ? ' ' . $middle_name : '' ) );
+
+	$update = array(
+		'ID'           => $user_id,
+		'display_name' => $display_name,
+		'first_name'   => $first_name,
+		'last_name'    => $last_name,
+		'user_email'   => $email,
+	);
+
+	if ( $pass ) {
+		if ( strlen( $pass ) < 6 ) {
+			wp_send_json_error( 'Пароль — минимум 6 символов' );
+		}
+		$update['user_pass'] = $pass;
+	}
+
+	$result = wp_update_user( $update );
+	if ( is_wp_error( $result ) ) {
+		wp_send_json_error( $result->get_error_message() );
+	}
+
+	update_user_meta( $user_id, 'middle_name',  $middle_name );
+	update_user_meta( $user_id, 'specialty',   $spec );
+	update_user_meta( $user_id, 'city',        $city );
+	update_user_meta( $user_id, 'szoib_member', $szoib );
+
+	wp_send_json_success();
+}
+add_action( 'wp_ajax_painmed_save_profile', 'painmed_save_profile' );
+
+
+/* ──────────────────────────────────────────
+   10. АВТОРИЗАЦИЯ — enqueue + AJAX
+   ────────────────────────────────────────── */
+
+function painmed_enqueue_auth() {
+	if ( ! is_user_logged_in() ) {
+		wp_enqueue_style(
+			'painmed-auth',
+			get_template_directory_uri() . '/assets/css/style-auth.css',
+			[],
+			'1.0'
+		);
+		wp_enqueue_script(
+			'painmed-auth',
+			get_template_directory_uri() . '/assets/js/auth.js',
+			[],
+			'1.0',
+			true
+		);
+		wp_localize_script( 'painmed-auth', 'painmedAuth', [
+			'ajaxurl' => admin_url( 'admin-ajax.php' ),
+			'nonce'   => wp_create_nonce( 'painmed_auth_nonce' ),
+		] );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'painmed_enqueue_auth' );
+
+function painmed_ajax_login() {
+	check_ajax_referer( 'painmed_auth_nonce', 'nonce' );
+
+	$email = sanitize_email( isset( $_POST['email'] ) ? $_POST['email'] : '' );
+	$pass  = isset( $_POST['password'] ) ? $_POST['password'] : '';
+
+	if ( ! $email || ! $pass ) {
+		wp_send_json_error( 'Заполните все поля' );
+	}
+
+	$user = get_user_by( 'email', $email );
+	if ( ! $user ) {
+		wp_send_json_error( 'Пользователь с таким email не найден' );
+	}
+
+	$result = wp_signon( [
+		'user_login'    => $user->user_login,
+		'user_password' => $pass,
+		'remember'      => true,
+	], false );
+
+	if ( is_wp_error( $result ) ) {
+		wp_send_json_error( 'Неверный пароль' );
+	}
+
+	wp_send_json_success();
+}
+add_action( 'wp_ajax_nopriv_painmed_login', 'painmed_ajax_login' );
+
+function painmed_ajax_register() {
+	check_ajax_referer( 'painmed_auth_nonce', 'nonce' );
+
+	$last_name   = sanitize_text_field( isset( $_POST['last_name'] )   ? $_POST['last_name']   : '' );
+	$first_name  = sanitize_text_field( isset( $_POST['first_name'] )  ? $_POST['first_name']  : '' );
+	$middle_name = sanitize_text_field( isset( $_POST['middle_name'] ) ? $_POST['middle_name'] : '' );
+	$email       = sanitize_email(      isset( $_POST['email'] )       ? $_POST['email']       : '' );
+	$spec        = sanitize_text_field( isset( $_POST['spec'] )        ? $_POST['spec']        : '' );
+	$city        = sanitize_text_field( isset( $_POST['city'] )        ? $_POST['city']        : '' );
+	$pass        = isset( $_POST['password'] ) ? $_POST['password'] : '';
+
+	if ( ! $last_name || ! $first_name || ! $email || ! $pass ) {
+		wp_send_json_error( 'Заполните обязательные поля' );
+	}
+	if ( strlen( $pass ) < 6 ) {
+		wp_send_json_error( 'Пароль — минимум 6 символов' );
+	}
+	if ( email_exists( $email ) ) {
+		wp_send_json_error( 'Этот email уже зарегистрирован' );
+	}
+
+	$display_name = trim( $last_name . ' ' . $first_name . ( $middle_name ? ' ' . $middle_name : '' ) );
+
+	// Генерируем уникальный username из email
+	$base     = sanitize_user( strtolower( strstr( $email, '@', true ) ) );
+	$username = $base;
+	$i        = 1;
+	while ( username_exists( $username ) ) {
+		$username = $base . $i;
+		$i++;
+	}
+
+	$user_id = wp_create_user( $username, $pass, $email );
+	if ( is_wp_error( $user_id ) ) {
+		wp_send_json_error( $user_id->get_error_message() );
+	}
+
+	wp_update_user( [
+		'ID'           => $user_id,
+		'display_name' => $display_name,
+		'first_name'   => $first_name,
+		'last_name'    => $last_name,
+	] );
+
+	update_user_meta( $user_id, 'middle_name', $middle_name );
+	if ( $spec ) update_user_meta( $user_id, 'specialty', $spec );
+	if ( $city ) update_user_meta( $user_id, 'city', $city );
+	update_user_meta( $user_id, 'old_id', '' );
+
+	// Автологин после регистрации
+	wp_signon( [
+		'user_login'    => $username,
+		'user_password' => $pass,
+		'remember'      => true,
+	], false );
+
+	wp_send_json_success();
+}
+add_action( 'wp_ajax_nopriv_painmed_register', 'painmed_ajax_register' );
+
+
+/* ──────────────────────────────────────────
+   10. AJAX — АРХИВ ТРАНСЛЯЦИЙ (фильтрация + load more)
    ────────────────────────────────────────── */
 function painmed_arhiv_load_more() {
 	check_ajax_referer( 'painmed_arhiv_nonce', 'nonce' );
@@ -693,7 +893,7 @@ add_action( 'wp_ajax_nopriv_painmed_arhiv_load',  'painmed_arhiv_load_more' );
 
 
 /* ──────────────────────────────────────────
-   10. СЧЁТЧИК ПРОСМОТРОВ ЭФИРА
+   11. СЧЁТЧИК ПРОСМОТРОВ ЭФИРА
    ────────────────────────────────────────── */
 function painmed_increment_efir_views() {
 	if ( is_singular( 'efir' ) && ! is_admin() ) {
